@@ -5,7 +5,6 @@ class Cog
     def initialize(name, base_dir: nil, config_file: nil)
       @name = name
       @base_dir = base_dir || File.dirname($0)
-      @config = load_config(config_file || File.join(@base_dir, 'config.yaml'))
       @module = create_bundle_module
 
       load_commands
@@ -18,15 +17,13 @@ class Cog
       CogCmd.const_set(@name.capitalize, Module.new)
     end
 
-    def load_config(path=nil)
-      path ||= File.join(@base_dir, 'config.yaml')
-      Cog::Config.new(path)
-    end
+    # def load_config(path=nil)
+    #   path ||= File.join(@base_dir, 'config.yaml')
+    #   Cog::Config.new(path)
+    # end
 
     def load_commands
-      @config[:commands].each do |command, config|
-        require File.join(@base_dir, 'lib', 'cog_cmd', @name, command)
-      end
+      require File.join(@base_dir, 'lib', 'cog_cmd')
     end
 
     def run_command
