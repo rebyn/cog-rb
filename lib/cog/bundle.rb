@@ -11,9 +11,6 @@ class Cog
     end
 
     def create_bundle_module
-      return if Object.const_defined?('CogCmd')
-
-      Object.const_set('CogCmd', Module.new)
       CogCmd.const_set(@name.capitalize, Module.new)
     end
 
