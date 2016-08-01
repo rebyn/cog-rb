@@ -7,7 +7,7 @@ class Cog
       @base_dir = base_dir || File.dirname($0)
       @module = create_bundle_module
 
-      load_commands
+      # load_commands
     end
 
     def create_bundle_module
@@ -22,9 +22,9 @@ class Cog
     #   Cog::Config.new(path)
     # end
 
-    def load_commands
-      require File.join(@base_dir, 'lib', 'cog_cmd')
-    end
+    # def load_commands
+    #   require File.join(@base_dir, 'lib', 'cog_cmd')
+    # end
 
     def run_command
       command = ENV['COG_COMMAND']
