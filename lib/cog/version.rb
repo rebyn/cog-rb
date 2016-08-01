@@ -1,3 +1,3 @@
 class Cog
-  VERSION = "0.1.12"
+  VERSION = "0.2.12"
 end
